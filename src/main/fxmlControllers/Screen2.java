@@ -5,10 +5,10 @@ import main.SceneManager;
 
 import java.io.IOException;
 
-public class Controller {
-    public void gotoscreentwo(ActionEvent actionEvent) {
+public class Screen2 {
+    public void goBack(ActionEvent actionEvent) {
         try {
-            SceneManager.getInstance().switchTo("Screen2", "Second Screen");
+            SceneManager.getInstance().switchTo("Home", "Home Screen");
         } catch (IOException e) {
             e.printStackTrace();
         }

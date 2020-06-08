@@ -8,29 +8,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class SceneManager {
-    private Stage primaryStage = null;
     private static SceneManager INSTANCE = new SceneManager();
+    private Stage primaryStage = null;
 
     private SceneManager() {
-    }
-
-    public void start(Stage primaryStage) {
-        this.primaryStage = primaryStage;
-        try {
-            Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/Home.fxml"));
-            primaryStage.setTitle("Insurance Inc.");
-            primaryStage.setScene(new Scene(root, 300, 275));
-            primaryStage.setFullScreen(true);
-            primaryStage.show();
-        } catch (IOException e) {
-            System.out.println("Error loading FXML File");
-            e.printStackTrace();
-        }
-
-    }
-
-    public void switchTo(String fxmlname) {
-
     }
 
     public static SceneManager getInstance() {
@@ -42,5 +23,27 @@ public class SceneManager {
             }
         }
         return INSTANCE;
+    }
+
+    public void start(Stage primaryStage) {
+        this.primaryStage = primaryStage;
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/Home.fxml"));
+            primaryStage.setTitle("Insurance Inc. - Home");
+            primaryStage.setScene(new Scene(root, 300, 275));
+            primaryStage.setFullScreen(true);
+            primaryStage.show();
+        } catch (IOException e) {
+            System.out.println("Error loading FXML File");
+            e.printStackTrace();
+        }
+
+    }
+
+    public void switchTo(String fxmlName, String title) throws IOException {
+        Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/" + fxmlName + ".fxml"));
+        primaryStage.setTitle("Insurance Inc. - " + title);
+        primaryStage.show();
+        primaryStage.setScene(new Scene(root, 300, 275));
     }
 }
