@@ -10,7 +10,7 @@ import java.io.IOException;
 public class SceneManager {
     private static SceneManager INSTANCE = new SceneManager();
     private Stage primaryStage = null;
-
+    private String currentType;
     private SceneManager() {
     }
 
@@ -38,6 +38,14 @@ public class SceneManager {
             e.printStackTrace();
         }
 
+    }
+
+    public String getCurrentType() {
+        return currentType;
+    }
+
+    public void setCurrentType(String currentType) {
+        this.currentType = currentType;
     }
 
     public void switchTo(String fxmlName, String title) throws IOException {

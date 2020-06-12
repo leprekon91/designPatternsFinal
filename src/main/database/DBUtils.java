@@ -17,7 +17,7 @@ public class DBUtils {
             connection = DriverManager.getConnection("jdbc:sqlite:main.db");
             Statement statement = connection.createStatement();
             statement.setQueryTimeout(1);
-            statement.executeUpdate("CREATE TABLE IF NOT EXISTS purchases (name string,surname string,date string,remarks string)");
+            statement.executeUpdate("CREATE TABLE IF NOT EXISTS purchases (name string,surname string,date string,remarks string,type String)");
             Logger.Log("success", "DBUtils", "Database init success");
         } catch (SQLException e) {
             Logger.Log("error", "DBUtils", "Database insurance failed.");
