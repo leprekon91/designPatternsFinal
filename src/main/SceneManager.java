@@ -30,11 +30,11 @@ public class SceneManager {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/Home.fxml"));
             primaryStage.setTitle("Insurance Inc. - Home");
-            primaryStage.setScene(new Scene(root, 300, 275));
-            primaryStage.setFullScreen(true);
+            primaryStage.setScene(new Scene(root, 1024, 768));
             primaryStage.show();
+            Logger.Log("success", "SceneManager", "JavaFX initialized. Showing Home screen.");
         } catch (IOException e) {
-            System.out.println("Error loading FXML File");
+            Logger.Log("error", "SceneManager", "Error loading FXML File");
             e.printStackTrace();
         }
 
@@ -44,6 +44,7 @@ public class SceneManager {
         Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/" + fxmlName + ".fxml"));
         primaryStage.setTitle("Insurance Inc. - " + title);
         primaryStage.show();
-        primaryStage.setScene(new Scene(root, 300, 275));
+        primaryStage.setScene(new Scene(root, 1024, 768));
+        Logger.Log("success", "SceneManager", "Switching to screen" + title);
     }
 }
