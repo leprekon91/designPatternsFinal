@@ -8,8 +8,10 @@ package main;
  * @enduml
 
  */
+
 import javafx.application.Application;
 import javafx.stage.Stage;
+import main.database.DBUtils;
 
 public class Main extends Application {
 
@@ -20,9 +22,12 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         Logger.Log("info", "Main", "Start up.");
-        SceneManager.getInstance().start(primaryStage);
-        // Init Database
 
+        // Init Database
+        DBUtils.EnsureDatabase();
+
+// Init JavaFX Main Scene
+        SceneManager.getInstance().start(primaryStage);
 //        SampleJDBC.go();
 
     }
