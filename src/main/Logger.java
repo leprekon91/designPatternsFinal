@@ -1,5 +1,7 @@
 package main;
 
+import java.time.LocalDateTime;
+
 /**
  * MainController controls connections to database and Current values for the FXML
  * Also does the logging on screen console
@@ -35,7 +37,7 @@ public class Logger {
                 fgColor = ANSI_RESET;
                 break;
         }
-        System.out.println(fgColor + "[" + tag + "]:" + className + " :: " + msg + "\n" + ANSI_RESET);
+        System.out.println(fgColor + "[" + tag + "]: |" + LocalDateTime.now() + "| " + className + " ::> " + msg + "\n" + ANSI_RESET);
     }
 
 

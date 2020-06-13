@@ -34,4 +34,13 @@ public class HomeController {
         }
 
     }
+
+    public void goToList(ActionEvent actionEvent) {
+        try {
+            SceneManager.getInstance().switchTo("ListPurchases", "List of all purchases");
+        } catch (IOException e) {
+            e.printStackTrace();
+            Logger.Log("error", "HomeController", "Error switching to purchases list screen.");
+        }
+    }
 }

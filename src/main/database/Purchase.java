@@ -1,48 +1,60 @@
 package main.database;
 
-public class Purchase {
-    private String Name;
-    private String Surname;
-    private String Date;
-    private String Remarks;
+import javafx.beans.property.SimpleStringProperty;
 
-    public Purchase(String name, String surname, String date, String remarks) {
-        Name = name;
-        Surname = surname;
-        Date = date;
-        Remarks = remarks;
+public class Purchase {
+    private SimpleStringProperty Name;
+    private SimpleStringProperty Surname;
+    private SimpleStringProperty Date;
+    private SimpleStringProperty Remarks;
+    private SimpleStringProperty type;
+
+    public Purchase(String name, String surname, String date, String remarks, String type) {
+        this.Name = new SimpleStringProperty(name);
+        this.Surname = new SimpleStringProperty(surname);
+        this.Date = new SimpleStringProperty(date);
+        this.Remarks = new SimpleStringProperty(remarks);
+        this.type = new SimpleStringProperty(type);
     }
 
     public String getName() {
-        return Name;
+        return Name.get();
     }
 
     public void setName(String name) {
-        Name = name;
+        Name.set(name);
     }
 
     public String getSurname() {
-        return Surname;
+        return Surname.get();
     }
 
     public void setSurname(String surname) {
-        Surname = surname;
+        Surname.set(surname);
     }
 
     public String getDate() {
-        return Date;
+        return Date.get();
     }
 
     public void setDate(String date) {
-        Date = date;
+        Date.set(date);
     }
 
     public String getRemarks() {
-        return Remarks;
+        return Remarks.get();
     }
 
     public void setRemarks(String remarks) {
-        Remarks = remarks;
+        Remarks.set(remarks);
+    }
+
+    public String getType() {
+        return type.get();
+    }
+
+    public void setType(String type) {
+        this.type.set(type);
     }
 
     @Override
@@ -52,6 +64,7 @@ public class Purchase {
                 ", Surname='" + Surname + '\'' +
                 ", Date='" + Date + '\'' +
                 ", Remarks='" + Remarks + '\'' +
+                ", Type='" + type + '\'' +
                 " }";
     }
 }

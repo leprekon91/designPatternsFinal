@@ -22,13 +22,9 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) {
         Logger.Log("info", "Main", "Start up.");
-
         // Init Database
         DBUtils.EnsureDatabase();
-
-// Init JavaFX Main Scene
+        // Init JavaFX Main Scene
         SceneManager.getInstance().start(primaryStage);
-//        SampleJDBC.go();
-
     }
 }

@@ -52,7 +52,7 @@ public class SceneManager {
         Parent root = FXMLLoader.load(getClass().getResource("fxmlFiles/" + fxmlName + ".fxml"));
         primaryStage.setTitle("Insurance Inc. - " + title);
         primaryStage.show();
-        primaryStage.setScene(new Scene(root, 1024, 768));
-        Logger.Log("success", "SceneManager", "Switching to screen" + title);
+        primaryStage.setScene(new Scene(root));
+        Logger.Log("success", "SceneManager", "Switching to screen: \"" + title + '"');
     }
 }

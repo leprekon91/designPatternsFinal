@@ -1,11 +1,11 @@
 package main.database;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import main.Logger;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
+import java.util.ArrayList;
 
 /**
  * This class answers for correct communication with the Database
@@ -33,12 +33,12 @@ public class DBUtils {
         }
     }
 
-    public static void insertPurchase(String name, String surname, String date, String remarks) {
+    public static void insertPurchase(String name, String surname, String date, String remarks, String type) {
         Connection connection = null;
         try {
             connection = DriverManager.getConnection("jdbc:sqlite:main.db");
             Statement statement = connection.createStatement();
-            statement.executeUpdate("insert into purchases values('" + name + "', '" + surname + "','" + date + "','" + remarks + "')");
+            statement.executeUpdate("insert into purchases values('" + name + "', '" + surname + "','" + date + "','" + remarks + "','" + type + "')");
             Logger.Log("info", "DBUtils", "insert purchase for " + name + " " + surname);
         } catch (SQLException e) {
             Logger.Log("error", "DBUtils", "Database insert failed.");
@@ -52,5 +52,39 @@ public class DBUtils {
                 System.err.println(e.getMessage());
             }
         }
+    }
+
+    public static ObservableList getAllPurchases() {
+        Connection connection = null;
+        String sql = "SELECT * FROM purchases";
+        ArrayList<Purchase> result = new ArrayList<>();
+        try {
+            connection = DriverManager.getConnection("jdbc:sqlite:main.db");
+            Statement stmt = connection.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            // loop through the result set
+            while (rs.next()) {
+                String name = rs.getString("name");
+                String surname = rs.getString("surname");
+                String date = rs.getString("date");
+                String remarks = rs.getString("remarks");
+                String type = rs.getString("type");
+                result.add(new Purchase(name, surname, date, remarks, type));
+            }
+            Logger.Log("info", "DBUtils", "Pulled " + result.size() + " records of purchases.");
+        } catch (SQLException e) {
+            Logger.Log("error", "DBUtils", "Database select all failed.");
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (connection != null)
+                    connection.close();
+            } catch (SQLException e) {
+                Logger.Log("error", "DBUtils", "Database connection close failed.");
+                System.err.println(e.getMessage());
+            }
+        }
+        ObservableList data = FXCollections.observableList(result);
+        return data;
     }
 }
