@@ -25,6 +25,11 @@ public class SceneManager {
         return INSTANCE;
     }
 
+    /**
+     * Starts up the stage and main menu scene
+     *
+     * @param primaryStage Stage JFX object received from launch method
+     */
     public void start(Stage primaryStage) {
         this.primaryStage = primaryStage;
         try {

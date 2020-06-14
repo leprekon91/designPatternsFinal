@@ -7,6 +7,11 @@ import main.json.JSONRead;
 
 public class Main extends Application {
 
+    /**
+     * Start of the application.
+     *
+     * @param args
+     */
     public static void main(String[] args) {
         launch(args);
     }
