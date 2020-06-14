@@ -9,6 +9,7 @@ import main.Logger;
 import main.SceneManager;
 import main.database.DBUtils;
 import main.database.Purchase;
+import main.json.Configuration;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -21,11 +22,13 @@ public class AddPurchase {
     public TextArea remarksFld;
     public DatePicker dateFld;
     public Label statusLbl;
+    public Label configLbl;
 
     public void initialize() {
         String type = SceneManager.getInstance().getCurrentType();
         titleLbl.setText("Add " + type.substring(0, 1).toUpperCase() + type.substring(1).toLowerCase() + " Insurance");
         dateFld.setValue(LocalDate.now());
+        configLbl.setText("Version: " + Configuration.getInstance().getVersion() + ", Developer(s): " + Configuration.getInstance().getName1() + ", " + Configuration.getInstance().getName2());
     }
 
     public boolean validate() {
@@ -62,8 +65,8 @@ public class AddPurchase {
                     , SceneManager.getInstance().getCurrentType());
 
             Logger.Log("info", "AddPurchase", "Added purchase to database: " + purchase);
-
-            statusLbl.setText("Added new purchase;");
+            Logger.insertLog(purchase);
+            statusLbl.setText("Added new purchase");
         }
     }
 }

@@ -3,6 +3,20 @@
 title __MAIN's Class Diagram__\n
 
   namespace main {
+    class main.Logger {
+        {static} + ANSI_BLUE : String
+        {static} + ANSI_GREEN : String
+        {static} + ANSI_RED : String
+        {static} + ANSI_RESET : String
+        {static} + ANSI_WHITE : String
+        {static} + ANSI_YELLOW : String
+        {static} + Log()
+        {static} + insertLog()
+    }
+  }
+  
+
+  namespace main {
     class main.Main {
         {static} + main()
         + start()
@@ -11,17 +25,13 @@ title __MAIN's Class Diagram__\n
   
 
   namespace main {
-    class main.SampleJDBC {
-        {static} + go()
-    }
-  }
-  
-
-  namespace main {
     class main.SceneManager {
         {static} - INSTANCE : SceneManager
+        - currentType : String
         - primaryStage : Stage
+        + getCurrentType()
         {static} + getInstance()
+        + setCurrentType()
         + start()
         + switchTo()
         - SceneManager()

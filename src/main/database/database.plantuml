@@ -4,17 +4,10 @@ title __DATABASE's Class Diagram__\n
 
   namespace main {
     namespace database {
-      class main.database.ConnectionManager {
-          {static} - INSTANCE : ConnectionManager
-          {static} + getInstance()
-      }
-    }
-  }
-  
-
-  namespace main {
-    namespace database {
       class main.database.DBUtils {
+          {static} + EnsureDatabase()
+          {static} + getAllPurchases()
+          {static} + insertPurchase()
       }
     }
   }
@@ -23,19 +16,22 @@ title __DATABASE's Class Diagram__\n
   namespace main {
     namespace database {
       class main.database.Purchase {
-          - Date : String
-          - Name : String
-          - Remarks : String
-          - Surname : String
+          - Date : SimpleStringProperty
+          - Name : SimpleStringProperty
+          - Remarks : SimpleStringProperty
+          - Surname : SimpleStringProperty
+          - type : SimpleStringProperty
           + Purchase()
           + getDate()
           + getName()
           + getRemarks()
           + getSurname()
+          + getType()
           + setDate()
           + setName()
           + setRemarks()
           + setSurname()
+          + setType()
           + toString()
       }
     }

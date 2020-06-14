@@ -4,8 +4,18 @@ title __FXMLCONTROLLERS's Class Diagram__\n
 
   namespace main {
     namespace fxmlControllers {
-      class main.fxmlControllers.HomeController {
-          + gotoscreentwo()
+      class main.fxmlControllers.AddPurchase {
+          + configLbl : Label
+          + dateFld : DatePicker
+          + nameFld : TextField
+          + remarksFld : TextArea
+          + statusLbl : Label
+          + surnameFld : TextField
+          + titleLbl : Label
+          + backHome()
+          + initialize()
+          + submitPurchase()
+          + validate()
       }
     }
   }
@@ -13,8 +23,34 @@ title __FXMLCONTROLLERS's Class Diagram__\n
 
   namespace main {
     namespace fxmlControllers {
-      class main.fxmlControllers.Screen2 {
-          + goBack()
+      class main.fxmlControllers.HomeController {
+          + configLbl : Label
+          + goToAddPurchaseScreen()
+          + goToApartments()
+          + goToCars()
+          + goToHealth()
+          + goToLife()
+          + goToList()
+          + initialize()
+      }
+    }
+  }
+  
+
+  namespace main {
+    namespace fxmlControllers {
+      class main.fxmlControllers.ListPurchases {
+          + configLbl : Label
+          + dateCol : TableColumn
+          + nameCol : TableColumn
+          + remarksCol : TableColumn
+          + surnameCol : TableColumn
+          + tableView : TableView
+          + typeCol : TableColumn
+          - purchases : ObservableList<Purchase>
+          + backHome()
+          + initialize()
+          + populateTable()
       }
     }
   }

@@ -16,6 +16,7 @@
     <rowConstraints>
         <RowConstraints maxHeight="-Infinity" minHeight="30.0" vgrow="SOMETIMES"/>
         <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="366.0" vgrow="SOMETIMES"/>
+        <RowConstraints maxHeight="-Infinity" minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
     </rowConstraints>
     <children>
         <Label text="Purchases" textFill="#2629c9" GridPane.columnIndex="1" GridPane.halignment="CENTER"
@@ -39,6 +40,7 @@
                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY"/>
             </columnResizePolicy>
         </TableView>
+        <Label fx:id="configLbl" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
     </children>
     <padding>
         <Insets bottom="8.0" left="8.0" right="8.0" top="8.0"/>

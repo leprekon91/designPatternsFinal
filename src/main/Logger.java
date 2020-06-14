@@ -1,5 +1,9 @@
 package main;
 
+import main.database.Purchase;
+
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 
 /**
@@ -40,5 +44,30 @@ public class Logger {
         System.out.println(fgColor + "[" + tag + "]: |" + LocalDateTime.now() + "| " + className + " ::> " + msg + "\n" + ANSI_RESET);
     }
 
-
+    public static void insertLog(Purchase p) {
+        // open file
+        try {
+            FileWriter pw = new FileWriter("log.csv", true);
+            pw.append(p.getName());
+            pw.append(',');
+            pw.append(p.getSurname());
+            pw.append(',');
+            pw.append(p.getDate());
+            pw.append(',');
+            pw.append(p.getRemarks());
+            pw.append(',');
+            pw.append(p.getType());
+            pw.append('\n');
+            pw.flush();
+            pw.close();
+            Logger.Log("info", "Logger", "Saved purchase to log.csv file");
+        } catch (IOException e) {
+            Logger.Log("error", "Logger", "Failed writing insert log to file.");
+            e.printStackTrace();
+        }
+        // add new line
+        // save file
+    }
 }
+
+
