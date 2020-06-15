@@ -8,7 +8,7 @@ import main.json.Configuration;
 
 import java.io.IOException;
 
-public class HomeController {
+public class Home {
 
     public Label configLbl;
 
@@ -38,7 +38,7 @@ public class HomeController {
             SceneManager.getInstance().switchTo("AddPurchase", "Add " + type + " Insurance Purchase");
         } catch (IOException e) {
             e.printStackTrace();
-            Logger.Log("error", "HomeController", "Error switching to " + type + " screen.");
+            Logger.Log("error", "Home", "Error switching to " + type + " screen.");
         }
 
     }
@@ -48,7 +48,7 @@ public class HomeController {
             SceneManager.getInstance().switchTo("ListPurchases", "List of all purchases");
         } catch (IOException e) {
             e.printStackTrace();
-            Logger.Log("error", "HomeController", "Error switching to purchases list screen.");
+            Logger.Log("error", "Home", "Error switching to purchases list screen.");
         }
     }
 }

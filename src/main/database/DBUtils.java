@@ -11,6 +11,9 @@ import java.util.ArrayList;
  * This class answers for correct communication with the Database
  */
 public class DBUtils {
+    /**
+     * Ensures the database exists, if not creates a new main.db file
+     */
     public static void EnsureDatabase() {
         Connection connection = null;
         try {
@@ -33,6 +36,15 @@ public class DBUtils {
         }
     }
 
+    /**
+     * Gets a purchase object and inserts it into the database
+     *
+     * @param name    First Name of the costumer
+     * @param surname Last Name of the costumer
+     * @param date    Date of purchase
+     * @param remarks Remarks on the purchase
+     * @param type    Insurance type string
+     */
     public static void insertPurchase(String name, String surname, String date, String remarks, String type) {
         Connection connection = null;
         try {
@@ -54,6 +66,11 @@ public class DBUtils {
         }
     }
 
+    /**
+     * Read database for all purchases
+     *
+     * @return ObservableList of all purchases from the database
+     */
     public static ObservableList getAllPurchases() {
         Connection connection = null;
         String sql = "SELECT * FROM purchases";

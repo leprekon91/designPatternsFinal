@@ -2,6 +2,9 @@ package main.database;
 
 import javafx.beans.property.SimpleStringProperty;
 
+/**
+ * Model Object for the
+ */
 public class Purchase {
     private SimpleStringProperty Name;
     private SimpleStringProperty Surname;
