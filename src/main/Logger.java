@@ -7,8 +7,7 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 
 /**
- * MainController controls connections to database and Current values for the FXML
- * Also does the logging on screen console
+ * Logger class for logging to the console and CSV file
  */
 public class Logger {
 
@@ -21,6 +20,13 @@ public class Logger {
     public static final String ANSI_BLUE = "\u001B[34m";
     public static final String ANSI_WHITE = "\u001B[37m";
 
+    /**
+     * Log a message to the console
+     *
+     * @param tag       Identifying string
+     * @param className Class that calls the logger
+     * @param msg       message to show
+     */
     public static void Log(String tag, String className, String msg) {
         String fgColor = ANSI_WHITE;
 
@@ -44,6 +50,11 @@ public class Logger {
         System.out.println(fgColor + "[" + tag + "]: |" + LocalDateTime.now() + "| " + className + " ::> " + msg + "\n" + ANSI_RESET);
     }
 
+    /**
+     * Log a new purchase to the CSV file
+     *
+     * @param p
+     */
     public static void insertLog(Purchase p) {
         // open file
         try {
@@ -65,8 +76,6 @@ public class Logger {
             Logger.Log("error", "Logger", "Failed writing insert log to file.");
             e.printStackTrace();
         }
-        // add new line
-        // save file
     }
 }
 

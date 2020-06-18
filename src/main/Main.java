@@ -14,6 +14,11 @@ public class Main extends Application {
         launch(args);
     }
 
+    /**
+     * Start of JavaFX and our logic initialization.
+     *
+     * @param primaryStage
+     */
     @Override
     public void start(Stage primaryStage) {
         Logger.Log("info", "Main", "Start up.");

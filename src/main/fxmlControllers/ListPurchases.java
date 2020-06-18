@@ -13,8 +13,10 @@ import main.database.Purchase;
 import main.json.Configuration;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
+/**
+ * Controller of List screen
+ */
 public class ListPurchases {
     public TableView tableView;
     public TableColumn remarksCol;
@@ -26,6 +28,9 @@ public class ListPurchases {
 
     private final ObservableList<Purchase> purchases = DBUtils.getAllPurchases();
 
+    /**
+     * Init the data, pull it from the database and apply it to the table
+     */
     public void initialize() {
         nameCol.setCellValueFactory(new PropertyValueFactory<>("Name"));
         surnameCol.setCellValueFactory(new PropertyValueFactory<>("Surname"));
@@ -36,10 +41,11 @@ public class ListPurchases {
         configLbl.setText("Version: " + Configuration.getInstance().getVersion() + ", Developer(s): " + Configuration.getInstance().getName1() + ", " + Configuration.getInstance().getName2());
     }
 
-    public void populateTable(ArrayList<Purchase> list) {
-
-    }
-
+    /**
+     * Use SceneManager to navigate back home
+     *
+     * @param actionEvent Click event of Home Button
+     */
     public void backHome(ActionEvent actionEvent) {
         try {
             SceneManager.getInstance().switchTo("Home", "Insurance Inc. - Home");

@@ -14,6 +14,9 @@ import main.json.Configuration;
 import java.io.IOException;
 import java.time.LocalDate;
 
+/**
+ * AddPurchase screen controller
+ */
 public class AddPurchase {
 
     public Label titleLbl;
@@ -24,6 +27,9 @@ public class AddPurchase {
     public Label statusLbl;
     public Label configLbl;
 
+    /**
+     * Get the current type from  SceneManager and init the Labels
+     */
     public void initialize() {
         String type = SceneManager.getInstance().getCurrentType();
         titleLbl.setText("Add " + type.substring(0, 1).toUpperCase() + type.substring(1).toLowerCase() + " Insurance");
@@ -31,6 +37,11 @@ public class AddPurchase {
         configLbl.setText("Version: " + Configuration.getInstance().getVersion() + ", Developer(s): " + Configuration.getInstance().getName1() + ", " + Configuration.getInstance().getName2());
     }
 
+    /**
+     * Validate the form for non-empty values
+     *
+     * @return boolean Form Is Validated
+     */
     public boolean validate() {
         if (nameFld.getText().trim() == "" || surnameFld.getText().trim() == "" || remarksFld.getText().trim() == "" || dateFld.getValue() == null) {
             statusLbl.setText("All fields are required!");
@@ -40,6 +51,11 @@ public class AddPurchase {
         return true;
     }
 
+    /**
+     * Use SceneManager to navigate back home
+     *
+     * @param actionEvent Click event of Home Button
+     */
     public void backHome(ActionEvent actionEvent) {
         try {
             SceneManager.getInstance().switchTo("Home", "Insurance Inc. - Home");
@@ -49,6 +65,11 @@ public class AddPurchase {
         }
     }
 
+    /**
+     * Create a purchase Object, insert it to the database and log the action into CSV
+     *
+     * @param actionEvent Click event of submit button
+     */
     public void submitPurchase(ActionEvent actionEvent) {
         if (validate()) {
 

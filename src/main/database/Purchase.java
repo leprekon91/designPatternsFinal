@@ -3,7 +3,7 @@ package main.database;
 import javafx.beans.property.SimpleStringProperty;
 
 /**
- * Model Object for the
+ * Model Object for the purchase data table
  */
 public class Purchase {
     private SimpleStringProperty Name;

@@ -3,6 +3,9 @@ package main;
 import main.database.DBUtils;
 import main.json.JSONRead;
 
+/**
+ * Facade Class for simplifying logic startup procedure
+ */
 public class StartupFacade {
     public static void Startup() {
         Logger.Log("warning", "Startup", "Attempting read of config file...");
